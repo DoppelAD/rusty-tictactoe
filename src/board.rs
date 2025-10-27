@@ -27,7 +27,7 @@ impl Board {
         
         if self.cells[pos_row][pos_column].is_some() {
             return Err(BoardError::AlreadyUsed);
-        } 
+        }
 
         self.cells[pos_row][pos_column] = Some(player);
 

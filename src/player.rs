@@ -8,6 +8,21 @@ pub enum Player {
     O,
 }
 
+pub struct PlayerStats {
+    pub player: Player,
+    pub score: u32,
+}
+
+impl PlayerStats {
+    pub fn new(player: Player) -> PlayerStats {
+        Self { player, score: 0 }
+    }
+
+    pub fn increment_score(&mut self) {
+        self.score += 1;
+    }
+}
+
 impl fmt::Display for Player {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         match self {

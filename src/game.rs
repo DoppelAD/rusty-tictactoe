@@ -18,12 +18,8 @@ impl Game {
         }
     }
 
-    pub fn start_game(&mut self) {
+    pub fn start_game(&mut self) -> Option<Player> {
         println!("{}\n RuStY TiCTaCToE! \n{}\n{}", colored_text("==================", PURPLE), colored_text("==================", PURPLE), self.board);
-        self.game_loop()
-    }
-
-    fn game_loop(&mut self) {
         loop{
             let position = self.read_input();
 
@@ -42,14 +38,14 @@ impl Game {
             match self.board.check_winner() {
                 Some(player) => {
                     println!("{}\n Winner: {}\n{}", colored_text("===========", GREEN), player, colored_text("===========", GREEN));
-                    break;
+                    break Some(player);
                 },
                 None => {},
             }
 
             if self.board.is_full() {
                 println!("{}\n Draw :(\n{}", colored_text("===========", PURPLE), colored_text("===========", PURPLE));
-                break;
+                break None;
             }
         }
     }

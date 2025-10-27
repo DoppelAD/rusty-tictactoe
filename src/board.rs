@@ -1,6 +1,7 @@
 use std::fmt::{self};
 
 use crate::player::Player;
+use crate::position::Position;
 
 #[derive(Debug)]
 pub enum BoardError {
@@ -20,16 +21,16 @@ impl Board {
         }
     }
 
-    pub fn make_move(&mut self, pos_row: usize, pos_column: usize, player: Player) -> Result<(), BoardError> {
-        if pos_row > self.cells.len() || pos_column > self.cells[0].len(){ 
+    pub fn make_move(&mut self, position: Position, player: Player) -> Result<(), BoardError> {
+        if position.row > self.cells.len() || position.column > self.cells[0].len(){ 
             return Err(BoardError::OutOfBounds);
         }
         
-        if self.cells[pos_row][pos_column].is_some() {
+        if self.cells[position.row][position.column].is_some() {
             return Err(BoardError::AlreadyUsed);
         }
 
-        self.cells[pos_row][pos_column] = Some(player);
+        self.cells[position.row][position.column] = Some(player);
 
         Ok(())
     }

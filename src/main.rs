@@ -2,6 +2,7 @@ mod colors;
 mod game;
 mod board;
 mod player;
+mod position;
 
 use game::Game;
 

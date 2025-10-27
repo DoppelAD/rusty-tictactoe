@@ -1,6 +1,7 @@
 use crate::board::Board;
 use crate::player::Player;
 use crate::colors::{colored_text, GREEN, PURPLE};
+use crate::position::Position;
 
 pub struct Game {
     current_turn: Option<Player>,
@@ -22,7 +23,9 @@ impl Game {
 
     fn game_loop(&mut self) {
         for column in 0..3 {
-            match self.board.make_move(0, column, self.current_turn.unwrap()) {
+            let position = Position::new(0, 0);
+
+            match self.board.make_move(position, self.current_turn.unwrap()) {
                 Ok(_) => {
                     println!("\nRound {} \n{}", column + 1,  self.board);
                     match self.current_turn {
@@ -40,4 +43,7 @@ impl Game {
             }
         }
     }
+
+    
+
 }

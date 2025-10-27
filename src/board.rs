@@ -35,6 +35,10 @@ impl Board {
         Ok(())
     }
 
+    pub fn is_full(&self) -> bool {
+        self.cells.iter().flatten().all(|cell| cell.is_some())
+    }
+
     pub fn check_winner(&self) -> Option<Player> {
         let size = self.cells.len();
 

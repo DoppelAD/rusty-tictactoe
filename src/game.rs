@@ -46,6 +46,11 @@ impl Game {
                 },
                 None => {},
             }
+
+            if self.board.is_full() {
+                println!("{}\n Draw :(\n{}", colored_text("===========", PURPLE), colored_text("===========", PURPLE));
+                break;
+            }
         }
     }
 

@@ -21,7 +21,7 @@ impl Board {
         }
     }
 
-    pub fn make_move(&mut self, position: Position, player: Player) -> Result<(), BoardError> {
+    pub fn make_move(&mut self, position: &Position, player: Player) -> Result<(), BoardError> {
         if position.row > self.cells.len() || position.column > self.cells[0].len(){ 
             return Err(BoardError::OutOfBounds);
         }
